@@ -8,6 +8,8 @@ from pytorchyolo import detect, models
 print("Downloading weights file")
 filename = wget.download("https://pjreddie.com/media/files/yolov3.weights", out="weights")
 class ObjectDetector:
+	"""A class defined to detect no. of person in the given image and
+	calculate average IoU of the detections"""
 
 	def __init__(self, img_path, model_cfg, model_weights):
 		super(ObjectDetector, self).__init__()
@@ -25,6 +27,8 @@ class ObjectDetector:
 		self.iou_list = []
 
 	def process_groundtruth(self, json_file):
+		"""extract bbox coordinates from the annotation file"""
+
 		with open(json_file) as file:
 			annotation_data = json.load(file)
 
@@ -40,6 +44,8 @@ class ObjectDetector:
 					self.gt_boxes_list.append([x1, y1, x2, y2])
 
 	def bb_intersection_over_union(self, boxA, boxB):
+		"""computes iou of the pred bbox w.r.t gt bbox"""
+
 		# determine the (x, y)-coordinates of the intersection rectangle
 		xA = max(boxA[0], boxB[0])
 		yA = max(boxA[1], boxB[1])
@@ -103,6 +109,7 @@ class ObjectDetector:
 
 
 if __name__ == "__main__":
+	# initialize the required paths
 	image_path = "test_img/TopDownHumanDetection_4032x3024.jpg"
 	json_path = "test_img/person.json"
 	model_cfg = "cfg/yolov3.cfg"
