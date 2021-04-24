@@ -87,5 +87,6 @@ typing-extensions==3.7.4.3
 urllib3==1.25.10
 wcwidth==0.2.5
 Werkzeug==1.0.1
+wget==3.2
 wrapt==1.12.1
 zipp==3.1.0

@@ -1,9 +1,12 @@
 import json
+import wget
 
 import cv2
 from pytorchyolo import detect, models
 
 
+print("Downloading weights file")
+filename = wget.download("https://pjreddie.com/media/files/yolov3.weights", out="weights")
 class ObjectDetector:
 
 	def __init__(self, img_path, model_cfg, model_weights):
