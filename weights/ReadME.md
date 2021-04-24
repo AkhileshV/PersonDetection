@@ -1,0 +1,1 @@
+- running detect.py would automatically download yolov3.weights to this folder
