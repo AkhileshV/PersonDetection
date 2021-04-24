@@ -65,6 +65,8 @@ class ObjectDetector:
 		return iou
 
 	def run(self):
+		"""perform detection on the image"""
+		
 		for patch_y in range(self.n_patches_each_dim):
 			for patch_x in range(self.n_patches_each_dim):
 				crop_img = self.img[patch_y * self.each_patch_height:(patch_y + 1) * self.each_patch_height,
@@ -89,6 +91,8 @@ class ObjectDetector:
 				# cv2.waitKey()
 
 	def calculate_avg_iou(self):
+		"""estimate average iou of the detections"""
+
 		for pred_box in self.pred_boxes_list:
 			for gt_box in self.gt_boxes_list:
 				iou = self.bb_intersection_over_union(gt_box, pred_box[:4])
