@@ -1,7 +1,7 @@
 import json
-import wget
 
 import cv2
+import wget
 from pytorchyolo import detect, models
 
 
